@@ -74,6 +74,15 @@ def test_fingerprint_search_with_bad_duration(fingerprint):
         api.fingerprint(fingerprint, (0x8000))
 
 
+def test_single_mbid_search():
+    "Ensures batch MBID-to-AcoustID search"
+
+    api = AcoustID(os.environ['ACOUSTID_KEY'])
+    resp = api.acoustids_for_mbid('b724b973-53e0-4bba-9e2f-9aab916165a8')
+
+    assert type(resp) == list
+
+
 def test_invalid_client_key():
     "Ensures invalid API keys are properly trapped"
 

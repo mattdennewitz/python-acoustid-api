@@ -19,6 +19,7 @@ Presently covered:
 
 - Track ID lookup
 - Fingerprint lookup
+- MBID-to-AcoustID lookup
 
 ## Usage
 

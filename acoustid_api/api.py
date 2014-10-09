@@ -29,7 +29,8 @@ class AcoustID(object):
 
         self._session = None
 
-    def _dispatch(self, method, path, params=None, data=None):
+    def _dispatch(self, method, path, params=None, data=None,
+                  return_key='results'):
         "Internal request processor"
 
         if not self._session:
@@ -48,7 +49,7 @@ class AcoustID(object):
             self._handle_error(resp_body['error'])
 
         # send back the results
-        return resp_body['results']
+        return resp_body[return_key]
 
     def _handle_error(self, error):
         "Spins a raw error code into a useful exception"
@@ -101,3 +102,16 @@ class AcoustID(object):
         })
 
         return self._dispatch('GET', self.LOOKUP_PATH, params=params)
+
+    def acoustids_for_mbid(self, mbid=None):
+        "Returns AcoustIDs for a single MusicBrainz id"
+
+        # batch implementation will be availble when
+        # multi-mbid responses aren't 500'ing
+        params = self._get_params(extra={
+            'batch': 0,
+            'mbid': mbid,
+        })
+
+        return self._dispatch('GET', '/v2/track/list_by_mbid', params=params,
+                              return_key='tracks')

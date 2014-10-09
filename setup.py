@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='python-acoustid-api',
-    version='0.0.1',
+    version='0.0.2',
     description="Lightweight wrapper around AcoustID's API",
     author='Matt Dennewitz',
     author_email='mattdennewitz@gmail.com',
