@@ -7,7 +7,18 @@ Current state: in development.
 
 ## Getting Started
 
-While in development, installation should be done by cloning this repo.
+Although in development, this wrapper can be installed via Pypi:
+
+```
+$ pip install python-acoustid-api
+```
+
+## API facilities
+
+Presently covered:
+
+- Track ID lookup
+- Fingerprint lookup
 
 ## Usage
 
