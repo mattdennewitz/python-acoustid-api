@@ -33,6 +33,15 @@ def test_track_search_with_meta():
     assert type(resp) == list
 
 
+def test_bad_track_id():
+    "Sends a request with a bad track UUID"
+
+    api = AcoustID(os.environ['ACOUSTID_KEY'])
+
+    with pytest.raises(exceptions.InvalidUUID):
+        resp = api.track('l-o-l')
+
+
 def test_basic_fingerprint_search(fingerprint):
     "Tests a simple fingerprint search"
 
@@ -40,6 +49,15 @@ def test_basic_fingerprint_search(fingerprint):
     resp = api.fingerprint(fingerprint, 291)
 
     assert type(resp) == list
+
+
+def test_bad_fingerprint():
+    "Sends a request with a bad fingerprint"
+
+    api = AcoustID(os.environ['ACOUSTID_KEY'])
+
+    with pytest.raises(exceptions.InvalidFingerprint):
+        api.fingerprint('no-way-this-works', 1337)
 
 
 def test_fingerprint_search_with_bad_duration(fingerprint):
