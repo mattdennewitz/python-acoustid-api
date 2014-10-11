@@ -2,11 +2,15 @@
 """
 
 from __future__ import unicode_literals
+import logging
 import urlparse
 
 import requests
 
 from . import consts, exceptions
+
+
+log = logging.getLogger('acoustid-api')
 
 
 class AcoustID(object):
@@ -40,7 +44,7 @@ class AcoustID(object):
         req = requests.Request(method, url, params=params, data=data)
         req = req.prepare()
 
-        print req.url
+        log.debug(req.url)
 
         resp = self._session.send(req)
         resp_body = resp.json()
