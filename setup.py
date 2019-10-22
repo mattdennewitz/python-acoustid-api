@@ -9,7 +9,7 @@ setup(
     author_email='mattdennewitz@gmail.com',
     url='http://github.com/mattdennewitz/python-acoustid-api',
     packages=find_packages(),
-    install_requires=['requests == 2.4.3'],
+    install_requires=['requests == 2.20.0'],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
